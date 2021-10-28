@@ -1,0 +1,9 @@
+const path = require("path");
+
+module.exports = {
+  config: path.resolve("./frameworks/database/postgresql/config", "config.js"),
+  "models-path": path.resolve("./frameworks/database/postgresqlmodels"),
+  "migrations-path": path.resolve(
+    "./frameworks/database/postgresql/migrations"
+  ),
+};
