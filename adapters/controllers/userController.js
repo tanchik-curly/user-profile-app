@@ -7,14 +7,30 @@ const registerUser = async (req, res, next) => {
   const data = req.body;
   try {
     const result = await service.register(data);
-    res.status(201).send(result);
+    res.status(201).send({ ...result, message: "User saved successfully!" });
   } catch (err) {
     next(err);
   }
 };
 
-const login = (req, res, next) => {};
+const login = async (req, res, next) => {
+  const data = req.body;
+  try {
+    const result = await service.login(data);
+    res.send(result);
+  } catch (err) {
+    next(err);
+  }
+};
 
-const getUserProfile = (req, res, next) => {};
+const getUserProfile = async (req, res, next) => {
+  const { userData } = req;
+  try {
+    const result = await service.getUserProfile(userData.id);
+    res.send(result);
+  } catch (err) {
+    next(err);
+  }
+};
 
 export { registerUser, login, getUserProfile };
